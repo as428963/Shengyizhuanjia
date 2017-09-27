@@ -5,11 +5,14 @@
 
 .side-menu li{
   border-left: none;
+  background-color: rgb(78,78,78);
 }
 
 .side-background{
   background-color: rgb(78,78,78);
 }
+
+
 .side-menu li i{
   font-size:medium!important;
 }
@@ -37,4 +40,19 @@
   height: 25vw;
   display: table-cell;
   vertical-align: middle;
+}
+
+.margin-left{
+  margin-left: 10px;
+}
+.on-right{
+  margin-left:40%;
+  width:60%
+}
+
+.active-item{
+  background-color:#fff;
+  border-left-color: #ff6A3C;
+  border-left-width: 4px;
+  border-left-style:solid;
 }
