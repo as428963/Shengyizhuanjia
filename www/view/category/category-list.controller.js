@@ -3,7 +3,16 @@
  */
 (function () {
   'use strict';
-  angular.module('starter.controllers').controller('CategoryListCtrl',['$ionicHistory','$scope','$ionicActionSheet',function ($ionicHistory,$scope,$ionicActionSheet) {
+  angular.module('starter.controllers').controller('CategoryListCtrl',['$ionicHistory','$scope','$ionicActionSheet','CategoryService',function ($ionicHistory,$scope,$ionicActionSheet,CategoryService) {
+    $scope.showInfo='无小分类进入大分类';
+    $scope.$on('$stateChangeSuccess',function (event,toState,toParams,fromState,fromParams) {
+      console.log(event,toState,toParams,fromState,fromParams);
+      if (fromState == 'app.product-list'){
+        $scope.showInfo ='无小分类进入大分类';
+      }
+
+    })
+
     $scope.categories=[
 
       {
@@ -96,6 +105,7 @@
 
     ];
     $scope.activeCategory={};
+    $scope.activeSubCategory ={};
     if($scope.categories.length>0){
       $scope.activeCategory=$scope.categories[0];
     }
@@ -107,7 +117,6 @@
     };
 
     $scope.selectSubCategory=function (data) {
-      console.log(data);
       $scope.activeSubCategory=data;
       $ionicHistory.goBack();
     };
@@ -140,6 +149,14 @@
     };
     $scope.gotoCategoryAdd=function () {
       location.href='#/app/category-add/' + $scope.activeCategory.ID + '/' + $scope.activeCategory.Name;
-    }
+    };
+    $scope.$watch('activeSubCategory',function (newValue,oldValue) {
+
+      if(newValue.ID){
+
+        CategoryService.updateCategory($scope.activeSubCategory);
+      }
+
+    });
   }]);
 })();

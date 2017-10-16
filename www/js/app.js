@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
+angular.module('starter', ['ionic','ngMessages', 'starter.controllers','starter.services','ngCordova','syzj.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -56,6 +56,46 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
       controller: 'MainCtrl'
     })
 
+    .state('app.changepassowrd', {
+      url: '/changepassword',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/changepassword/changepassword.html',
+          controller:'ChangePasswordCtrl'
+        }
+      }
+    })
+
+    .state('app.about', {
+      url: '/about',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/about/about.html',
+
+        }
+      }
+    })
+
+    .state('app.product-add', {
+      url: '/product-add',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/product/product-add.html',
+          controller:'ProductAddCtrl'
+        }
+      }
+    })
+
+    .state('app.product-list', {
+      url: '/product-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/product/product-list.html',
+          controller:'ProductListCtrl'
+        }
+      }
+    })
+
 
     .state('app.search', {
     url: '/search',
@@ -65,6 +105,36 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
       }
     }
   })
+    .state('app.setting', {
+      url: '/setting',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/setting/setting.html',
+          controller:'SettingCtrl'
+        }
+      }
+    })
+
+    .state('app.shop', {
+      url: '/shop',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/shop/shop.html',
+          controller:'ShopCtrl'
+        }
+      }
+    })
+
+    .state('app.shop-edit', {
+      url: '/shop-edit',
+      params:{title:'',property:''},
+      views: {
+        'menuContent': {
+          templateUrl: 'view/shop/shop-edit.html',
+          controller:'ShopEditCtrl'
+        }
+      }
+    })
 
 
 
